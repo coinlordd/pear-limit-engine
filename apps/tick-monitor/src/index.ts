@@ -1,6 +1,7 @@
 import { RatioValue } from '@pair/shared'
 import { redis } from './redis'
 import { logger } from './logger'
+import { TickPublisher } from './publisher'
 
 logger.info('Service starting...')
 
@@ -24,8 +25,13 @@ async function loop() {
       ts: Date.now(),
     }
 
+    // Set the ratio in redis
     await redis.setPearRatio(value)
-    await redis.publishPearRatio(value)
+
+    // Publish the ratio
+    await TickPublisher.publishPearRatio(value)
+
+    // Log the ratio
     logger.info(`Updated ratio=${ratio.toFixed(4)} (A=${priceA.toFixed(2)}, B=${priceB.toFixed(2)})`)
 
     await new Promise((r) => setTimeout(r, 2000))
