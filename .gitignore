@@ -90,6 +90,11 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+**/dist/
+
+# Turbo cache
+.turbo
+**/.turbo
 
 # Gatsby files
 .cache/
@@ -134,3 +139,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Build artifacts
+*.js.map
+
+# Lock files (keep bun.lock, pnpm-lock.yaml for now but exclude others)  
+package-lock.json
+yarn.lock
+
+# Environment files
+.env*
+
