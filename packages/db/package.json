@@ -1,0 +1,26 @@
+{
+  "name": "@pair/db",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "bun --watch run src/index.ts",
+    "generate": "bun run src/cli/generate.ts",
+    "migrate": "bun run src/cli/migrate.ts",
+    "rollback": "bun run src/cli/rollback.ts",
+    "status": "bun run src/cli/status.ts"
+  },
+  "dependencies": {
+    "typeorm": "^0.3.20",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.2",
+    "inquirer": "^9.2.12",
+    "commander": "^11.1.0",
+    "glob": "^10.3.10",
+    "@pair/logger": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9"
+  }
+}

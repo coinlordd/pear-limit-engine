@@ -1,0 +1,17 @@
+{
+  "name": "@pair/temporal-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@temporalio/worker": "^1.9.3",
+    "@temporalio/workflow": "^1.9.3",
+    "@temporalio/client": "^1.9.3",
+    "@pair/shared": "workspace:*",
+    "@pair/db": "workspace:*",
+    "@pair/logger": "workspace:*"
+  }
+}
