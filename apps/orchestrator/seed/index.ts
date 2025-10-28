@@ -3,7 +3,7 @@ import { logger, redis } from '../src/services'
 generate()
 
 async function generate() {
-  const amount = 100
+  const amount = 1000
   const baseRatio = 0.67
   const variance = 0.05
   const precision = 10000
