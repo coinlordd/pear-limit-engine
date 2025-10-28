@@ -1,6 +1,6 @@
 import { BaseClient } from './base'
 import { Channel } from './types'
-import type { OrderValue, RatioValue } from '@pear/shared'
+import type { OrderValue, RatioValue, TickValue } from '@pear/shared'
 
 export class RedisClient extends BaseClient {
   constructor(url: string, system_prefix: string) {
@@ -9,6 +9,18 @@ export class RedisClient extends BaseClient {
 
   private generateKey(channel: Channel, pairId: string) {
     return `${channel}:${pairId}`
+  }
+
+  /* --------- TICK DATA --------- */
+
+  public async setTickData(value: TickValue): Promise<void> {
+    const key = this.generateKey('tick', value.assetId)
+    await this.set(key, value)
+  }
+
+  public async getTickData(assetId: string): Promise<TickValue | null> {
+    const key = this.generateKey('tick', assetId)
+    return await this.get<TickValue>(key)
   }
 
   /* --------- RATIOS --------- */

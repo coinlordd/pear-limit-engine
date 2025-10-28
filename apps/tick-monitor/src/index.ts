@@ -1,4 +1,4 @@
-import { RatioValue } from '@pear/shared'
+import { RatioValue, TickValue } from '@pear/shared'
 import { redis, logger } from './services'
 import { TickPublisher } from './publisher'
 import { Config } from './config'
@@ -17,26 +17,36 @@ async function loop() {
     const priceB = 150 + Math.random() * 20
     const ratio = priceA / priceB
 
-    const value: RatioValue = {
+    const tickA: TickValue = {
+      assetId: 'A',
+      price: priceA,
+      timestamp: Date.now(),
+    }
+
+    const tickB: TickValue = {
+      assetId: 'B',
+      price: priceB,
+      timestamp: Date.now(),
+    }
+
+    const ratioValue: RatioValue = {
       pairId: 'A:B',
-      priceA: priceA,
-      priceB: priceB,
       ratio,
       timestamp: Date.now(),
     }
 
-    // Set the ratio in redis
-    await redis.setPearRatio(value)
+    // Set the tick data and ratio in redis
+    await Promise.all([redis.setTickData(tickA), redis.setTickData(tickB), redis.setPearRatio(ratioValue)])
 
-    // Publish the ratio
-    await TickPublisher.publishPearRatio(value)
+    // Publish the ratio to the orchestrator
+    await TickPublisher.publishPearRatio(ratioValue)
 
     // Log the ratio
     if (Config.VERBOSE) {
       logger.info(`Updated ratio=${ratio.toFixed(4)} (A=${priceA.toFixed(2)}, B=${priceB.toFixed(2)})`)
     }
 
-    await new Promise((r) => setTimeout(r, 2000))
+    await new Promise((r) => setTimeout(r, 10))
   }
 }
 

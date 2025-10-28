@@ -10,6 +10,8 @@ export interface Trade {
   updated_at?: Date
 }
 
+// TODO: compress keys to single character ids to reduce storage size.
+
 export interface OrderValue {
   /* Order ID */
   id: string
@@ -24,12 +26,17 @@ export interface OrderValue {
 export interface RatioValue {
   /* Pair ID */
   pairId: string
-  /* Price of asset A */
-  priceA: number
-  /* Price of asset B */
-  priceB: number
   /* Ratio of PA divided by PB */
   ratio: number
+  /* Timestamp in milliseconds */
+  timestamp: number
+}
+
+export interface TickValue {
+  /* Asset ID*/
+  assetId: string
+  /* Price of asset */
+  price: number
   /* Timestamp in milliseconds */
   timestamp: number
 }

@@ -1,10 +1,10 @@
-import { RatioValue, OrderValue } from '@pear/shared'
+import { RatioValue, OrderValue, TickValue } from '@pear/shared'
 
 // prettier-ignore
 export interface ChannelRegistry {
  /* --------- Market Data --------- */
  'ratio': RatioValue                // Latest ratio per pair (SET)
-//  'tick': TickValue                  // Optional, raw tick data (Pub/Sub)
+ 'tick': TickValue                  // Raw tick data (Pub/Sub)
 
  /* ----------- Orders ------------*/
  'orders:below': string            // Limit orders below ratio (ZSET)
