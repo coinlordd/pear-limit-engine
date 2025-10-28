@@ -1,13 +1,13 @@
 import { RatioValue } from '@pear/shared'
 import { logger, redis } from './services'
-import { OrderMatcher } from './order-matcher'
+import { StreamProcessor } from './processor'
 
 logger.info('Service starting...')
 
 async function main() {
   await redis.subscribe({
     channel: 'ratio',
-    handler: (value: RatioValue) => OrderMatcher.onMessage(value),
+    handler: (value: RatioValue) => StreamProcessor.onMessage(value),
   })
 
   logger.info('Subscribed to ratio channel')

@@ -1,7 +1,7 @@
 import { RatioValue } from '@pear/shared'
 import { logger, redis } from './services'
 
-class _OrderMatcher {
+class _StreamProcessor {
   private latestRatioMap = new Map<string, RatioValue>()
   private processingMap = new Map<string, boolean>()
 
@@ -27,7 +27,7 @@ class _OrderMatcher {
    */
   private async matchOrders(ratio: RatioValue): Promise<void> {
     const orders = await redis.listLimitOrderValuesByRatio(ratio.pairId, ratio.ratio)
-    logger.info(`[matcher] Matched ${orders.length} orders for ${ratio.pairId} @ ${ratio.ratio}`)
+    logger.info(`Matched ${orders.length} orders for ${ratio.pairId} @ ${ratio.ratio}`)
   }
 
   /**
@@ -45,7 +45,7 @@ class _OrderMatcher {
     try {
       await this.matchOrders(ratio)
     } catch (err) {
-      logger.error(`[matcher] Error processing ${id}:`, err)
+      logger.error(`Error processing ${id}:`, err)
     }
 
     // Check if a newer ratio arrived while we were processing
@@ -61,4 +61,4 @@ class _OrderMatcher {
   }
 }
 
-export const OrderMatcher = new _OrderMatcher()
+export const StreamProcessor = new _StreamProcessor()
