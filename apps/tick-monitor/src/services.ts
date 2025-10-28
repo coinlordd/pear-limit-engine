@@ -1,5 +1,5 @@
-import { RedisClient } from '@pair/redis'
-import { createLogger } from '@pair/logger'
+import { RedisClient } from '@pear/redis'
+import { createLogger } from '@pear/logger'
 import { Config } from './config'
 
 export const logger = createLogger('tick-monitor')

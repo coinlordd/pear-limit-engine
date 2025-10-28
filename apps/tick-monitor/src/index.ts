@@ -1,4 +1,4 @@
-import { RatioValue } from '@pair/shared'
+import { RatioValue } from '@pear/shared'
 import { redis, logger } from './services'
 import { TickPublisher } from './publisher'
 import { Config } from './config'

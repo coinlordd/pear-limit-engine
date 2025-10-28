@@ -1,4 +1,4 @@
-import { RatioValue } from '@pair/shared'
+import { RatioValue } from '@pear/shared'
 import { redis } from './services'
 
 class _TickPublisher {

@@ -1,4 +1,4 @@
-import { RatioValue, OrderValue } from '@pair/shared'
+import { RatioValue, OrderValue } from '@pear/shared'
 
 // prettier-ignore
 export interface ChannelRegistry {

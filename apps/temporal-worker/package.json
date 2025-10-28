@@ -1,5 +1,5 @@
 {
-  "name": "@pair/temporal-worker",
+  "name": "@pear/temporal-worker",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +10,8 @@
     "@temporalio/worker": "^1.9.3",
     "@temporalio/workflow": "^1.9.3",
     "@temporalio/client": "^1.9.3",
-    "@pair/shared": "workspace:*",
-    "@pair/db": "workspace:*",
-    "@pair/logger": "workspace:*"
+    "@pear/shared": "workspace:*",
+    "@pear/db": "workspace:*",
+    "@pear/logger": "workspace:*"
   }
 }

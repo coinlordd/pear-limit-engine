@@ -9,60 +9,60 @@
       },
     },
     "apps/executor": {
-      "name": "@pair/executor",
+      "name": "@pear/executor",
       "dependencies": {
-        "@pair/db": "workspace:*",
-        "@pair/logger": "workspace:*",
-        "@pair/redis": "workspace:*",
-        "@pair/shared": "workspace:*",
+        "@pear/db": "workspace:*",
+        "@pear/logger": "workspace:*",
+        "@pear/redis": "workspace:*",
+        "@pear/shared": "workspace:*",
         "ioredis": "^5.3.2",
       },
     },
     "apps/finalizer": {
-      "name": "@pair/finalizer",
+      "name": "@pear/finalizer",
       "dependencies": {
-        "@pair/db": "workspace:*",
-        "@pair/logger": "workspace:*",
-        "@pair/redis": "workspace:*",
-        "@pair/shared": "workspace:*",
+        "@pear/db": "workspace:*",
+        "@pear/logger": "workspace:*",
+        "@pear/redis": "workspace:*",
+        "@pear/shared": "workspace:*",
         "ioredis": "^5.3.2",
       },
     },
-    "apps/order-planner": {
-      "name": "@pair/order-planner",
+    "apps/orchestrator": {
+      "name": "@pear/order-planner",
       "dependencies": {
-        "@pair/db": "workspace:*",
-        "@pair/logger": "workspace:*",
-        "@pair/redis": "workspace:*",
-        "@pair/shared": "workspace:*",
+        "@pear/db": "workspace:*",
+        "@pear/logger": "workspace:*",
+        "@pear/redis": "workspace:*",
+        "@pear/shared": "workspace:*",
         "ioredis": "^5.3.2",
       },
     },
     "apps/temporal-worker": {
-      "name": "@pair/temporal-worker",
+      "name": "@pear/temporal-worker",
       "dependencies": {
-        "@pair/db": "workspace:*",
-        "@pair/logger": "workspace:*",
-        "@pair/shared": "workspace:*",
+        "@pear/db": "workspace:*",
+        "@pear/logger": "workspace:*",
+        "@pear/shared": "workspace:*",
         "@temporalio/client": "^1.9.3",
         "@temporalio/worker": "^1.9.3",
         "@temporalio/workflow": "^1.9.3",
       },
     },
     "apps/tick-monitor": {
-      "name": "@pair/tick-monitor",
+      "name": "@pear/tick-monitor",
       "dependencies": {
-        "@pair/logger": "workspace:*",
-        "@pair/redis": "workspace:*",
-        "@pair/shared": "workspace:*",
+        "@pear/logger": "workspace:*",
+        "@pear/redis": "workspace:*",
+        "@pear/shared": "workspace:*",
         "ioredis": "^5.3.2",
       },
     },
     "packages/db": {
-      "name": "@pair/db",
+      "name": "@pear/db",
       "version": "1.0.0",
       "dependencies": {
-        "@pair/logger": "workspace:*",
+        "@pear/logger": "workspace:*",
         "commander": "^11.1.0",
         "glob": "^10.3.10",
         "inquirer": "^9.2.12",
@@ -75,22 +75,22 @@
       },
     },
     "packages/logger": {
-      "name": "@pair/logger",
+      "name": "@pear/logger",
       "version": "1.0.0",
       "dependencies": {
         "winston": "^3.15.0",
       },
     },
     "packages/redis": {
-      "name": "@pair/redis",
+      "name": "@pear/redis",
       "version": "1.0.0",
       "dependencies": {
-        "@pair/shared": "workspace:*",
+        "@pear/shared": "workspace:*",
         "ioredis": "^5.3.2",
       },
     },
     "packages/shared": {
-      "name": "@pair/shared",
+      "name": "@pear/shared",
       "version": "1.0.0",
     },
   },
@@ -137,23 +137,23 @@
 
     "@jsonjoy.com/util": ["@jsonjoy.com/util@1.9.0", "", { "dependencies": { "@jsonjoy.com/buffers": "1.2.1", "@jsonjoy.com/codegen": "1.0.0" }, "peerDependencies": { "tslib": "2.8.1" } }, "sha512-pLuQo+VPRnN8hfPqUTLTHk126wuYdXVxE6aDmjSeV4NCAgyxWbiOIeNJVtID3h1Vzpoi9m4jXezf73I6LgabgQ=="],
 
-    "@pair/db": ["@pair/db@workspace:packages/db"],
+    "@pear/db": ["@pear/db@workspace:packages/db"],
 
-    "@pair/executor": ["@pair/executor@workspace:apps/executor"],
+    "@pear/executor": ["@pear/executor@workspace:apps/executor"],
 
-    "@pair/finalizer": ["@pair/finalizer@workspace:apps/finalizer"],
+    "@pear/finalizer": ["@pear/finalizer@workspace:apps/finalizer"],
 
-    "@pair/logger": ["@pair/logger@workspace:packages/logger"],
+    "@pear/logger": ["@pear/logger@workspace:packages/logger"],
 
-    "@pair/order-planner": ["@pair/order-planner@workspace:apps/order-planner"],
+    "@pear/order-planner": ["@pear/order-planner@workspace:apps/orchestrator"],
 
-    "@pair/redis": ["@pair/redis@workspace:packages/redis"],
+    "@pear/redis": ["@pear/redis@workspace:packages/redis"],
 
-    "@pair/shared": ["@pair/shared@workspace:packages/shared"],
+    "@pear/shared": ["@pear/shared@workspace:packages/shared"],
 
-    "@pair/temporal-worker": ["@pair/temporal-worker@workspace:apps/temporal-worker"],
+    "@pear/temporal-worker": ["@pear/temporal-worker@workspace:apps/temporal-worker"],
 
-    "@pair/tick-monitor": ["@pair/tick-monitor@workspace:apps/tick-monitor"],
+    "@pear/tick-monitor": ["@pear/tick-monitor@workspace:apps/tick-monitor"],
 
     "@pkgjs/parseargs": ["@pkgjs/parseargs@0.11.0", "", {}, "sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg=="],
 

@@ -1,5 +1,5 @@
 {
-  "name": "@pair/finalizer",
+  "name": "@pear/finalizer",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "ioredis": "^5.3.2",
-    "@pair/shared": "workspace:*",
-    "@pair/db": "workspace:*",
-    "@pair/logger": "workspace:*",
-    "@pair/redis": "workspace:*"
+    "@pear/shared": "workspace:*",
+    "@pear/db": "workspace:*",
+    "@pear/logger": "workspace:*",
+    "@pear/redis": "workspace:*"
   }
 }

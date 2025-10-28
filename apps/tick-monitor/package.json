@@ -1,5 +1,5 @@
 {
-  "name": "@pair/tick-monitor",
+  "name": "@pear/tick-monitor",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "ioredis": "^5.3.2",
-    "@pair/shared": "workspace:*",
-    "@pair/logger": "workspace:*",
-    "@pair/redis": "workspace:*"
+    "@pear/shared": "workspace:*",
+    "@pear/logger": "workspace:*",
+    "@pear/redis": "workspace:*"
   }
 }

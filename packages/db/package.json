@@ -1,5 +1,5 @@
 {
-  "name": "@pair/db",
+  "name": "@pear/db",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -18,7 +18,7 @@
     "inquirer": "^9.2.12",
     "commander": "^11.1.0",
     "glob": "^10.3.10",
-    "@pair/logger": "workspace:*"
+    "@pear/logger": "workspace:*"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.9"

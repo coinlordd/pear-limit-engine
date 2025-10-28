@@ -1,3 +1,3 @@
-import { createLogger } from '@pair/logger'
+import { createLogger } from '@pear/logger'
 
 export const logger = createLogger('db')

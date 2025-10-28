@@ -1,4 +1,4 @@
-import { RatioValue } from '@pair/shared'
+import { RatioValue } from '@pear/shared'
 import { logger, redis } from './services'
 
 class _OrderMatcher {

@@ -1,6 +1,6 @@
 import { BaseClient } from './base'
 import { Channel } from './types'
-import type { OrderValue, RatioValue } from '@pair/shared'
+import type { OrderValue, RatioValue } from '@pear/shared'
 
 export class RedisClient extends BaseClient {
   constructor(url: string, system_prefix: string) {

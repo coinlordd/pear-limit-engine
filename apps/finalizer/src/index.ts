@@ -1,5 +1,5 @@
-import { TradeState } from '@pair/shared'
-import { initDb, AppDataSource, Trade } from '@pair/db'
+import { TradeState } from '@pear/shared'
+import { initDb, AppDataSource, Trade } from '@pear/db'
 import { redis } from './redis'
 import { logger } from './logger'
 
