@@ -4,7 +4,7 @@ import { redis } from './services'
 class _TickPublisher {
   private readonly lastPublishedRatioMap: Map<string, RatioValue> = new Map()
   private readonly LAST_PUBLISHED_INTERVAL_MS = 100
-  private readonly LAST_PUBLISHED_DELTA = 0.001
+  private readonly LAST_PUBLISHED_DELTA = 0.1
 
   public async publishPearRatio(value: RatioValue): Promise<void> {
     // Check if we should publish the ratio
