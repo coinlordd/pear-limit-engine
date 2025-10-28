@@ -10,15 +10,26 @@ export interface Trade {
   updated_at?: Date
 }
 
-export interface RatioValue {
-  /* ID of the pear */
+export interface OrderValue {
+  /* Order ID */
   id: string
+  /* Pair ID */
+  pairId: string
+  /* Ratio at which the order should trigger */
+  ratio: number
+  /* Trigger type */
+  trigger: 'above' | 'below'
+}
+
+export interface RatioValue {
+  /* Pair ID */
+  pairId: string
   /* Price of asset A */
-  pa: number
+  priceA: number
   /* Price of asset B */
-  pb: number
+  priceB: number
   /* Ratio of PA divided by PB */
   ratio: number
   /* Timestamp in milliseconds */
-  ts: number
+  timestamp: number
 }

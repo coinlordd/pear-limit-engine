@@ -1,7 +1,15 @@
-import { RatioValue } from '@pair/shared'
+import { RatioValue, OrderValue } from '@pair/shared'
 
+// prettier-ignore
 export interface ChannelRegistry {
-  ratio: RatioValue
+ /* --------- Market Data --------- */
+ 'ratio': RatioValue                // Latest ratio per pair (SET)
+//  'tick': TickValue                  // Optional, raw tick data (Pub/Sub)
+
+ /* ----------- Orders ------------*/
+ 'orders:below': string            // Limit orders below ratio (ZSET)
+ 'orders:above': string            // Limit orders above ratio (ZSET)
+ 'orders:data': OrderValue         // Full order objects (HSET)
 }
 
 export type Channel = keyof ChannelRegistry

@@ -1,5 +1,5 @@
 import { RatioValue } from '@pair/shared'
-import { redis } from './redis'
+import { redis } from './services'
 
 class _TickPublisher {
   private readonly lastPublishedRatioMap: Map<string, RatioValue> = new Map()
@@ -14,18 +14,18 @@ class _TickPublisher {
     await redis.publish('ratio', value)
 
     // Update the last published ratio map
-    this.lastPublishedRatioMap.set(value.id, value)
+    this.lastPublishedRatioMap.set(value.pairId, value)
   }
 
   public shouldPublishPearRatio(value: RatioValue): boolean {
     // Get the last published ratio for this pear
-    const current = this.lastPublishedRatioMap.get(value.id)
+    const current = this.lastPublishedRatioMap.get(value.pairId)
 
     // If no previous ratio, we should publish
     if (!current) return true
 
     // Check if the interval has passed
-    const timeSinceLastPublish = value.ts - current.ts
+    const timeSinceLastPublish = value.timestamp - current.timestamp
     const hasPassedInterval = timeSinceLastPublish >= this.LAST_PUBLISHED_INTERVAL_MS
 
     // Check if the delta has passed
