@@ -12,13 +12,15 @@ class _StreamProcessor {
    * it starts a new processing loop.
    */
   public async onMessage(ratio: RatioValue): Promise<void> {
+    // Store the latest ratio
     this.latestRatioMap.set(ratio.pairId, ratio)
 
-    // Start processing if not already running
-    if (!this.processingMap.get(ratio.pairId)) {
-      this.processingMap.set(ratio.pairId, true)
-      void this.processNext(ratio.pairId)
-    }
+    // Ignore if already processing
+    if (this.processingMap.get(ratio.pairId)) return
+
+    // Start processing
+    this.processingMap.set(ratio.pairId, true)
+    await this.processNext(ratio.pairId)
   }
 
   /**
@@ -46,17 +48,17 @@ class _StreamProcessor {
       await this.matchOrders(ratio)
     } catch (err) {
       logger.error(`Error processing ${id}:`, err)
-    }
+    } finally {
+      // Check if a newer ratio arrived while we were processing
+      const latestAfter = this.latestRatioMap.get(id)
 
-    // Check if a newer ratio arrived while we were processing
-    const latestAfter = this.latestRatioMap.get(id)
-
-    if (latestAfter && latestAfter.timestamp !== ratio.timestamp) {
-      // A newer tick exists, immediately process again
-      await this.processNext(id)
-    } else {
-      // No newer tick, mark as idle
-      this.processingMap.set(id, false)
+      if (latestAfter && latestAfter.timestamp !== ratio.timestamp) {
+        // A newer tick exists, immediately process again
+        await this.processNext(id)
+      } else {
+        // No newer tick, mark as idle
+        this.processingMap.set(id, false)
+      }
     }
   }
 }
