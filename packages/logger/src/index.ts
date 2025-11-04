@@ -1,5 +1,7 @@
 import winston from 'winston'
 
+export type Logger = winston.Logger
+
 export function createLogger(context: string): winston.Logger {
   return winston.createLogger({
     level: process.env.LOG_LEVEL || 'info',

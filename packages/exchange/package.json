@@ -1,0 +1,16 @@
+{
+  "name": "@pear/exchange",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pear/logger": "workspace:*",
+    "@pear/shared": "workspace:*",
+    "reconnecting-websocket": "^4.4.0",
+    "zod": "^4.1.12"
+  }
+}
