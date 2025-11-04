@@ -1,6 +1,8 @@
 import { createLogger } from '@pear/logger'
-import { AbstractWebSocketClient } from '../../websocket'
-import { MessageDispatch, Subscription } from '../../websocket/types'
+
+import { AbstractWebSocketClient, MessageDispatch, Subscription } from '../websocket'
+import { Book, ExchangeClient } from '../../types'
+import { mapL2BookToBook } from './mappings'
 import {
   ChannelKey,
   ChannelKeySchema,
@@ -11,11 +13,25 @@ import {
   SubscriptionToMessageMap,
 } from './types'
 
-export class HyperliquidClient extends AbstractWebSocketClient<IncomingMessage, OutgoingMessage, SubscriptionPayload> {
+export class HyperliquidClient
+  extends AbstractWebSocketClient<IncomingMessage, OutgoingMessage, SubscriptionPayload>
+  implements ExchangeClient
+{
   constructor() {
     super({
       url: 'wss://api.hyperliquid.xyz/ws',
       logger: createLogger('hyperliquid'),
+    })
+  }
+
+  /**
+   * Subscribe to order book updates for a given symbol using the standardized interface.
+   * Internally uses the l2Book subscription and maps it to the standardized format.
+   */
+  book(symbol: string, handler: (book: Book) => void): () => void {
+    return this.subscribe({ type: 'l2Book', coin: symbol }, (message) => {
+      const standardizedBook = mapL2BookToBook(message.data)
+      handler(standardizedBook)
     })
   }
 

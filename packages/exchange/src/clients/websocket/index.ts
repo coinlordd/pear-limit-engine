@@ -4,6 +4,8 @@ import { Logger } from '@pear/logger'
 import { Emitter, Listener } from './events'
 import { MessageDispatch, Subscription, WSConfig, WSParams, WSState } from './types'
 
+export { type MessageDispatch, type Subscription } from './types'
+
 /**
   Core WebSocket client abstraction.
 
